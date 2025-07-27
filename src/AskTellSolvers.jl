@@ -52,9 +52,9 @@ struct BoxConstrainedSpec{S,T}
     end
 end
 
-#------------------------
-# Evaluation Oracle Types
-#------------------------
+#-------------
+# Oracle Types
+#-------------
 
 """
     Objective{F<:Function}
@@ -87,7 +87,7 @@ To define a custom solver, subtype `AskTellSolver` and implement the following m
 - `tell!(::Solver, args...; kwargs...)`: update the solver with new data
 - `result(::Solver, args...; kwargs...)`: return the current best solution
 
-Optionally, implement a method `optimize!(::OracleType, ::Solver, args...; kwargs...)`
+Optionally, implement a method `optimize!(::Oracle, ::Solver, args...; kwargs...)`
 providing a complete optimization loop.
 
 ## Intended Usage
@@ -131,7 +131,7 @@ Return the current result, typically the current best solution found.
 """
 function result end
 """
-    optimize!(::OracleType, ::Solver, args...; kwargs...)
+    optimize!(::Oracle, ::Solver, args...; kwargs...)
 
 Run optimization loop.
 """
